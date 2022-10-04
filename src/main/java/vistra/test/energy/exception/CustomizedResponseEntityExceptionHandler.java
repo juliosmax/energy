@@ -23,5 +23,17 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 		ErrorDetails errorDetails = new ErrorDetails(ex.getMessage());
 		return new ResponseEntity(errorDetails,HttpStatus.BAD_REQUEST);
 	}
+	
+	@ExceptionHandler(UnitNotFoundException.class)
+	public final ResponseEntity<ErrorDetails> handleUnitNotFoundException(Exception ex, WebRequest request) {
+		ErrorDetails errorDetails = new ErrorDetails(ex.getMessage());
+		return new ResponseEntity(errorDetails,HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(UnitValidationException.class)
+	public final ResponseEntity<ErrorDetails> handleUnitValidationException(Exception ex, WebRequest request) {
+		ErrorDetails errorDetails = new ErrorDetails(ex.getMessage());
+		return new ResponseEntity(errorDetails,HttpStatus.BAD_REQUEST);
+	}
 
 }

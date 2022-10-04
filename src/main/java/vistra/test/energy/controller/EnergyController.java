@@ -19,12 +19,16 @@ import vistra.test.energy.repository.MarketRepository;
 import vistra.test.energy.repository.UnitMarketDesignationRepository;
 import vistra.test.energy.repository.UnitRepository;
 import vistra.test.energy.repository.UnitTypeRepository;
+import vistra.test.energy.service.MarketDesignationService;
 
 @RestController
 public class EnergyController {
 	
 	@Autowired
 	private UnitMarketDesignationRepository unitMarketDesignationRepository;
+	
+	@Autowired
+	private MarketDesignationService marketDesignationService;
 	
 	@GetMapping("hello")
 	public List<UnitMarketDesignation> getDesignations() {
@@ -33,9 +37,9 @@ public class EnergyController {
 	
 	
 	@PostMapping("/marketdesignations/{unitId}")
-	public ResponseEntity<Object> registerMarketDesignation(@PathVariable String unitId, @RequestBody MarketDesignationsRequest marketDesignationsRequest) {
+	public ResponseEntity<Object> registerMarketDesignation(@PathVariable Long unitId, @RequestBody MarketDesignationsRequest marketDesignationsRequest) {
 		
-		System.out.println(marketDesignationsRequest.getEffectiveDate().getEffectiveDate());
+		this.marketDesignationService.registerMarketDesignations(unitId, marketDesignationsRequest);
 		return ResponseEntity.noContent().build();
 		 
 
