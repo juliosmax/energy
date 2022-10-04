@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 @Entity
 @Table(name = "unit")
 public class Unit {
@@ -29,7 +30,7 @@ public class Unit {
 	
 	private Long unitTypeId;
 	
-	private boolean draft;
+	private Boolean draft;
 	
 	private String unitIdentifier;
 	
@@ -38,7 +39,7 @@ public class Unit {
 	}
 	
 	public Unit(Long id, String name, String internalShortName, String internalLongName, Date unitStartDate,
-			Date unitEndDate, Long unitTypeId, boolean draft, String unitIdentifier) {
+			Date unitEndDate, Long unitTypeId, Boolean draft, String unitIdentifier) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -108,11 +109,11 @@ public class Unit {
 		this.unitTypeId = unitTypeId;
 	}
 
-	public boolean isDraft() {
+	public Boolean isDraft() {
 		return draft;
 	}
 
-	public void setDraft(boolean draft) {
+	public void setDraft(Boolean draft) {
 		this.draft = draft;
 	}
 
@@ -122,6 +123,13 @@ public class Unit {
 
 	public void setUnitIdentifier(String unitIdentifier) {
 		this.unitIdentifier = unitIdentifier;
+	}
+
+	@Override
+	public String toString() {
+		return "Unit [id=" + id + ", name=" + name + ", internalShortName=" + internalShortName + ", internalLongName="
+				+ internalLongName + ", unitStartDate=" + unitStartDate + ", unitEndDate=" + unitEndDate
+				+ ", unitTypeId=" + unitTypeId + ", draft=" + draft + ", unitIdentifier=" + unitIdentifier + "]";
 	}
 
 	
