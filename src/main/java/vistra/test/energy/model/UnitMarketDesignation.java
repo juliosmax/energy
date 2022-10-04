@@ -2,6 +2,7 @@ package vistra.test.energy.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,23 +26,23 @@ public class UnitMarketDesignation {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date effective_date;
 	
-	private String registration_code;
-	
-	private Integer market_share_percent;
+	private String registrationCode;
+	@Column(name="market_share_percent")
+	private Integer marketShare;
 	
 	public UnitMarketDesignation() {
 		
 	}
 
-	public UnitMarketDesignation(Long id, Long unitId, Long marketId, Date effective_date, String registration_code,
-			Integer market_share_percent) {
+	public UnitMarketDesignation(Long id, Long unitId, Long marketId, Date effective_date, String registrationCode,
+			Integer marketShare) {
 		super();
 		this.id = id;
 		this.unitId = unitId;
 		this.marketId = marketId;
 		this.effective_date = effective_date;
-		this.registration_code = registration_code;
-		this.market_share_percent = market_share_percent;
+		this.registrationCode = registrationCode;
+		this.marketShare = marketShare;
 	}
 
 	public Long getId() {
@@ -76,20 +77,27 @@ public class UnitMarketDesignation {
 		this.effective_date = effective_date;
 	}
 
-	public String getRegistration_code() {
-		return registration_code;
+	public String getRegistrationCode() {
+		return registrationCode;
 	}
 
-	public void setRegistration_code(String registration_code) {
-		this.registration_code = registration_code;
+	public void setRegistrationCode(String registrationCode) {
+		this.registrationCode = registrationCode;
 	}
 
-	public Integer getMarket_share_percent() {
-		return market_share_percent;
+	public Integer getMarketShare() {
+		return marketShare;
 	}
 
-	public void setMarket_share_percent(Integer market_share_percent) {
-		this.market_share_percent = market_share_percent;
+	public void setMarketSharePercent(Integer marketShare) {
+		this.marketShare = marketShare;
+	}
+
+	@Override
+	public String toString() {
+		return "UnitMarketDesignation [id=" + id + ", unitId=" + unitId + ", marketId=" + marketId + ", effective_date="
+				+ effective_date + ", registrationCode=" + registrationCode + ", marketShare="
+				+ marketShare + "]";
 	}
 	
 	
