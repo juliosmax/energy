@@ -12,4 +12,6 @@ public interface UnitMarketDesignationRepository extends JpaRepository<UnitMarke
 
  List<UnitMarketDesignation>  findByRegistrationCode(String registrationCode);
 
+ List<UnitMarketDesignation> findByUnitId(Long unitId);
+
 }
