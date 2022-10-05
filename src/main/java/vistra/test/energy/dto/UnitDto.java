@@ -1,5 +1,11 @@
 package vistra.test.energy.dto;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import vistra.test.energy.exception.UnitValidationException;
+
 public class UnitDto {
 
 	private String name;
@@ -106,6 +112,34 @@ public class UnitDto {
 
 	public void setPage(int page) {
 		this.page = page;
+	}
+	
+	public Date getUnitStartDateFormatted() {
+		  
+	    try {
+			if(getUnitStartDate()!=null) {
+	    	Date date=new SimpleDateFormat("yyyy-MM-dd").parse(getUnitStartDate());
+			return date; 
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			throw new UnitValidationException("Can not convert start date");
+		}  
+	    return null;
+	}
+	
+	public Date getUnitEndDateFormatted() {
+		  
+	    try {
+			if(getUnitEndDate()!=null) {
+	    	Date date=new SimpleDateFormat("yyyy-MM-dd").parse(getUnitEndDate());
+			return date; 
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			throw new UnitValidationException("Can not convert end date");
+		}  
+	    return null;
 	}
 	
 
