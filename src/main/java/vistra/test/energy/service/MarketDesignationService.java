@@ -63,6 +63,19 @@ public class MarketDesignationService {
 					this.unitMarketDesignationRepository.delete(unitMarketDesignationFromRepo);
 				}
 			}
+			
+			//updateAdd
+			for(UnitMarketDesignation unitMarketDesignationFromRequest :marketDesignationsRequest.getMarketDesignations()) {
+				List<UnitMarketDesignation> unitMarketDesignationList = unitMarketDesignationsList.stream()
+						.filter(q -> q.getMarketId() == unitMarketDesignationFromRequest.getMarketId()).collect(Collectors.toList());
+				if(unitMarketDesignationList.isEmpty()) {
+					unitMarketDesignationFromRequest.setUnitId(unitId);
+					unitMarketDesignationFromRequest
+					.setEffective_date(marketDesignationsRequest.getEffectiveDate().getEffectiveDate());
+					this.unitMarketDesignationRepository.saveAndFlush(unitMarketDesignationFromRequest);
+				}
+				
+			}
 
 		}
 
