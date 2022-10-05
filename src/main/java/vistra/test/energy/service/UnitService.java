@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import vistra.test.energy.dto.UnitDto;
+import vistra.test.energy.dto.UnitResponse;
 import vistra.test.energy.model.Unit;
 import vistra.test.energy.repository.UnitRepository;
 
@@ -19,7 +20,7 @@ public class UnitService {
 	@Autowired
 	private UnitRepository unitRepository;
 
-	public List<Unit> retrieveUnits(UnitDto unitDto){
+	public UnitResponse retrieveUnits(UnitDto unitDto){
 		
 		
 		Unit unit = new Unit();
@@ -37,11 +38,15 @@ public class UnitService {
 		
 		Pageable paging = PageRequest.of(unitDto.getPage(), unitDto.getSize());
 		
-		//List<Unit> unitsList = this.unitRepository.findAll(Example.of(unit),);
 		Page<Unit> unitsListPaginated = this.unitRepository.findAll(Example.of(unit),paging);
 		
+		UnitResponse unitResponse = new UnitResponse();
+		unitResponse.setRecords(unitsListPaginated.getContent());
+		unitResponse.setPage(unitsListPaginated.getNumber());
+		unitResponse.setTotalPages(unitsListPaginated.getTotalPages());
+		unitResponse.setTotalRecords(unitsListPaginated.getTotalElements());
 		
-		return unitsListPaginated.getContent();
+		return unitResponse;
 		
 	}
 

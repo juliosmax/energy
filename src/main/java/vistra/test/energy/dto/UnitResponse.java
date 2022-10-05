@@ -8,11 +8,15 @@ public class UnitResponse {
 	
 	private List<Unit> records;
 	
-	private int pageSize;
+	private int page;
 	
 	private int totalPages;
 	
-	private int totalRecords;
+	private long totalRecords;
+	
+	public UnitResponse() {
+		
+	}
 
 	public List<Unit> getRecords() {
 		return records;
@@ -22,12 +26,13 @@ public class UnitResponse {
 		this.records = records;
 	}
 
-	public int getPageSize() {
-		return pageSize;
+
+	public int getPage() {
+		return page;
 	}
 
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
+	public void setPage(int page) {
+		this.page = page;
 	}
 
 	public int getTotalPages() {
@@ -38,11 +43,11 @@ public class UnitResponse {
 		this.totalPages = totalPages;
 	}
 
-	public int getTotalRecords() {
+	public long getTotalRecords() {
 		return totalRecords;
 	}
 
-	public void setTotalRecords(int totalRecords) {
+	public void setTotalRecords(long totalRecords) {
 		this.totalRecords = totalRecords;
 	}
 

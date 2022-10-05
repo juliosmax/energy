@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import vistra.test.energy.dto.MarketDesignationsRequest;
 import vistra.test.energy.dto.UnitDto;
+import vistra.test.energy.dto.UnitResponse;
 import vistra.test.energy.model.Market;
 import vistra.test.energy.model.Unit;
 import vistra.test.energy.model.UnitMarketDesignation;
@@ -44,15 +45,15 @@ public class EnergyController {
 	}
 	
 	@GetMapping("/units")
-	public List<Unit> getUnits(@RequestParam(required = false) String name, @RequestParam(required = false) String unitStartDate, @RequestParam(required = false) String unitEndDate,
+	public UnitResponse getUnits(@RequestParam(required = false) String name, @RequestParam(required = false) String unitStartDate, @RequestParam(required = false) String unitEndDate,
 			@RequestParam(required = false) String unitTypeCode, @RequestParam(required = false) Boolean draft, @RequestParam(required = false) String unitIdentifier, 
 			@RequestParam(required = false) String marketCode, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size ) {
 		
 		UnitDto unitDto = new UnitDto(name,unitStartDate,unitEndDate,unitTypeCode,draft,unitIdentifier,marketCode,size,page);
 		
-		List<Unit> unitList = this.unitService.retrieveUnits(unitDto);
+		UnitResponse unitResponse = this.unitService.retrieveUnits(unitDto);
 		
-		return unitList;
+		return unitResponse;
 	}
 
 }
