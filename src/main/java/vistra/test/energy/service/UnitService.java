@@ -7,12 +7,14 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import vistra.test.energy.dto.UnitDto;
 import vistra.test.energy.dto.UnitResponse;
 import vistra.test.energy.model.Unit;
 import vistra.test.energy.repository.UnitRepository;
+import vistra.test.energy.utils.UnitSpecification;
 
 @Service
 public class UnitService {
@@ -23,22 +25,15 @@ public class UnitService {
 	public UnitResponse retrieveUnits(UnitDto unitDto){
 		
 		
-		Unit unit = new Unit();
-		if(unitDto.getDraft()!=null) {
-		unit.setDraft(unitDto.getDraft());
-		}	
-		
-		if(unitDto.getName()!=null) {
-		unit.setName(unitDto.getName());
-		}
-		
-		if(unitDto.getUnitIdentifier()!=null) {
-		unit.setUnitIdentifier(unitDto.getUnitIdentifier());
-		}
+		Specification<Unit> specification = Specification
+			    // firstName from parameter
+			    .where(unitDto.getName() == null ? null : UnitSpecification.nameContains(unitDto.getName()))
+			    .and(unitDto.getDraft() == null ? null : UnitSpecification.draftEq(unitDto.getDraft()))
+			    .and(unitDto.getUnitIdentifier() == null ? null : UnitSpecification.unitIdentifierEq(unitDto.getUnitIdentifier()));	
 		
 		Pageable paging = PageRequest.of(unitDto.getPage(), unitDto.getSize());
 		
-		Page<Unit> unitsListPaginated = this.unitRepository.findAll(Example.of(unit),paging);
+		Page<Unit> unitsListPaginated = this.unitRepository.findAll(specification,paging);
 		
 		UnitResponse unitResponse = new UnitResponse();
 		unitResponse.setRecords(unitsListPaginated.getContent());
