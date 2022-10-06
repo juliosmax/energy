@@ -7,9 +7,14 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import vistra.test.energy.dto.ErrorDetails;
 import vistra.test.energy.dto.MarketDesignationsRequest;
 import vistra.test.energy.exception.UnitNotFoundException;
 import vistra.test.energy.exception.UnitValidationException;
@@ -82,32 +87,52 @@ public class MarketDesignationService {
 	}
 
 	private void validations(Long unitId, MarketDesignationsRequest marketDesignationsRequest) {
+		
+		// At least 1 market designation must be pass
+		if (marketDesignationsRequest.getMarketDesignations().size() < 1) {
+			
+			ErrorDetails response = new ErrorDetails("At least 1 market designation must be pass");
+			throw new WebApplicationException(Response.status(Status.BAD_REQUEST)
+			          .entity(response)
+			          .build());
+			
+		}
 
 		// All fields are required
 		if (marketDesignationsRequest.getEffectiveDate().getDate() == null
 				|| marketDesignationsRequest.getEffectiveDate().getTime() == null) {
-			throw new UnitValidationException("All fields are required");
+			
+			ErrorDetails response = new ErrorDetails("All fields are required");
+			throw new WebApplicationException(Response.status(Status.BAD_REQUEST)
+			          .entity(response)
+			          .build());
 		}
 		for (UnitMarketDesignation unitMarketDesignation : marketDesignationsRequest.getMarketDesignations()) {
 			if (unitMarketDesignation.getRegistrationCode() == null || unitMarketDesignation.getMarketId() == null
 					|| unitMarketDesignation.getMarketShare() == null) {
-				throw new UnitValidationException("All fields are required");
+				
+				ErrorDetails response = new ErrorDetails("All fields are required");
+				throw new WebApplicationException(Response.status(Status.BAD_REQUEST)
+				          .entity(response)
+				          .build());
 			}
 		}
 
-		// At least 1 market designation must be pass
-		if (marketDesignationsRequest.getMarketDesignations().size() < 1) {
-			throw new UnitValidationException("At least 1 market designation must be pass");
-		}
 
 		// UnitId must exist in table master.unit
-		Unit unit = this.unitRepository.findById(unitId).orElseThrow(() -> new UnitNotFoundException("Unit not found"));
+		Unit unit = this.unitRepository.findById(unitId).orElseThrow(() ->  new WebApplicationException(Response.status(Status.BAD_REQUEST)
+		          .entity(new ErrorDetails("UnitId not found"))
+		          .build()));
 
 		// The total marketShare for all the designations must be exactly 100
 		Integer sum = marketDesignationsRequest.getMarketDesignations().stream().map(item -> item.getMarketShare())
 				.reduce(0, (a, b) -> a + b);
 		if (sum != 100) {
-			throw new UnitValidationException("The total marketShare for all the designations must be exactly 100");
+			//throw new UnitValidationException("The total marketShare for all the designations must be exactly 100");
+			ErrorDetails response = new ErrorDetails("The total marketShare for all the designations must be exactly 100");
+			throw new WebApplicationException(Response.status(Status.BAD_REQUEST)
+			          .entity(response)
+			          .build());
 		}
 
 		// All marketIds in the list must be different
@@ -116,7 +141,11 @@ public class MarketDesignationService {
 				.map(item -> item.getMarketId()).collect(Collectors.toList());
 		Set<Long> marketIdSet = new HashSet<Long>(marketIdList);
 		if (marketIdSet.size() != marketIdList.size()) {
-			throw new UnitValidationException("All marketIds in the list must be different");
+			
+			ErrorDetails response = new ErrorDetails("All marketIds in the list must be different");
+			throw new WebApplicationException(Response.status(Status.BAD_REQUEST)
+			          .entity(response)
+			          .build());
 		}
 
 		// Registration code is unique per unit and market
@@ -124,7 +153,11 @@ public class MarketDesignationService {
 				.map(item -> item.getRegistrationCode()).collect(Collectors.toList());
 		Set<String> registrationCodeSet = new HashSet<String>(registrationCodeList);
 		if (registrationCodeSet.size() != registrationCodeList.size()) {
-			throw new UnitValidationException("Registration code is unique per unit and market");
+			
+			ErrorDetails response = new ErrorDetails("Registration code is unique per unit and market");
+			throw new WebApplicationException(Response.status(Status.BAD_REQUEST)
+			          .entity(response)
+			          .build());
 		}
 
 		for (UnitMarketDesignation unitMarketDesignation : marketDesignationsRequest.getMarketDesignations()) {
@@ -135,7 +168,10 @@ public class MarketDesignationService {
 					.filter(q -> q.getUnitId() != unitId).collect(Collectors.toList());
 
 			if (!unitMarketDesignationListUnit.isEmpty()) {
-				throw new UnitValidationException("Registration code is unique per unit and market");
+				ErrorDetails response = new ErrorDetails("Registration code is unique per unit and market");
+				throw new WebApplicationException(Response.status(Status.BAD_REQUEST)
+				          .entity(response)
+				          .build());
 			}
 
 		}
