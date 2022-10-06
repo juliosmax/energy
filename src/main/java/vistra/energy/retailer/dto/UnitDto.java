@@ -4,7 +4,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import vistra.energy.retailer.exception.UnitValidationException;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+
 
 public class UnitDto {
 
@@ -123,7 +126,10 @@ public class UnitDto {
 			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			throw new UnitValidationException("Can not convert start date");
+			ErrorDetails response = new ErrorDetails("Can not convert start date");
+			throw new WebApplicationException(Response.status(Status.BAD_REQUEST)
+			          .entity(response)
+			          .build());
 		}  
 	    return null;
 	}
@@ -137,7 +143,10 @@ public class UnitDto {
 			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			throw new UnitValidationException("Can not convert end date");
+			ErrorDetails response = new ErrorDetails("Can not convert end date");
+			throw new WebApplicationException(Response.status(Status.BAD_REQUEST)
+			          .entity(response)
+			          .build());
 		}  
 	    return null;
 	}

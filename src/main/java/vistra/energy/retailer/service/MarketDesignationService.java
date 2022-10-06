@@ -16,8 +16,6 @@ import org.springframework.stereotype.Service;
 
 import vistra.energy.retailer.dto.ErrorDetails;
 import vistra.energy.retailer.dto.MarketDesignationsRequest;
-import vistra.energy.retailer.exception.UnitNotFoundException;
-import vistra.energy.retailer.exception.UnitValidationException;
 import vistra.energy.retailer.model.Unit;
 import vistra.energy.retailer.model.UnitMarketDesignation;
 import vistra.energy.retailer.repository.UnitMarketDesignationRepository;

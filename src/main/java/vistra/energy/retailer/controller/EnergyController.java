@@ -14,26 +14,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import vistra.energy.retailer.dto.MarketDesignationsRequest;
 import vistra.energy.retailer.dto.UnitDto;
 import vistra.energy.retailer.dto.UnitResponse;
-import vistra.energy.retailer.model.Market;
-import vistra.energy.retailer.model.Unit;
-import vistra.energy.retailer.model.UnitMarketDesignation;
-import vistra.energy.retailer.model.UnitType;
-import vistra.energy.retailer.repository.MarketRepository;
-import vistra.energy.retailer.repository.UnitMarketDesignationRepository;
-import vistra.energy.retailer.repository.UnitRepository;
-import vistra.energy.retailer.repository.UnitTypeRepository;
 import vistra.energy.retailer.service.MarketDesignationService;
 import vistra.energy.retailer.service.UnitService;
 

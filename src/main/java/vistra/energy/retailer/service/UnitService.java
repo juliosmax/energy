@@ -1,7 +1,10 @@
 package vistra.energy.retailer.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +15,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import vistra.energy.retailer.dto.DateTimeFormat;
 import vistra.energy.retailer.dto.UnitDto;
 import vistra.energy.retailer.dto.UnitResponse;
+import vistra.energy.retailer.dto.UnitResponseFormat;
 import vistra.energy.retailer.model.Market;
 import vistra.energy.retailer.model.Unit;
 import vistra.energy.retailer.model.UnitMarketDesignation;
@@ -70,13 +75,45 @@ public class UnitService {
 		Page<Unit> unitsListPaginated = this.unitRepository.findAll(specification,paging);
 		
 		UnitResponse unitResponse = new UnitResponse();
-		unitResponse.setRecords(unitsListPaginated.getContent());
+		
+		List<UnitResponseFormat> UnitResponseFormatList = unitTransformResponse(unitsListPaginated.getContent());
+		
+		unitResponse.setRecords(UnitResponseFormatList);
 		unitResponse.setPage(unitsListPaginated.getNumber());
 		unitResponse.setTotalPages(unitsListPaginated.getTotalPages());
 		unitResponse.setTotalRecords(unitsListPaginated.getTotalElements());
 		
 		return unitResponse;
 		
+	}
+	
+	private List<UnitResponseFormat> unitTransformResponse(List<Unit> unitList) {
+		List<UnitResponseFormat> unitResponseFormatList= new ArrayList();
+		for(Unit unitItem: unitList) {
+			UnitResponseFormat unitResponseFormat= new UnitResponseFormat();
+			unitResponseFormat.setId(unitItem.getId());
+			unitResponseFormat.setDraft(unitItem.isDraft());
+			unitResponseFormat.setInternalLongName(unitItem.getInternalLongName());
+			unitResponseFormat.setInternalShortName(unitItem.getInternalShortName());
+			unitResponseFormat.setName(unitItem.getName());
+			unitResponseFormat.setUnitIdentifier(unitItem.getUnitIdentifier());
+			
+			DateFormat dateFormatDate = new SimpleDateFormat("yyyy-mm-dd"); 
+			DateFormat dateFormatTime = new SimpleDateFormat("HH:mm:ss"); 
+			
+			DateTimeFormat dateTimeFormatEndDate = new DateTimeFormat(dateFormatDate.format(unitItem.getUnitEndDate()),dateFormatTime.format(unitItem.getUnitEndDate()));
+			unitResponseFormat.setUnitEndDate(dateTimeFormatEndDate);
+			
+			DateTimeFormat dateTimeFormatStartDate = new DateTimeFormat(dateFormatDate.format(unitItem.getUnitStartDate()),dateFormatTime.format(unitItem.getUnitStartDate()));
+			unitResponseFormat.setUnitStartDate(dateTimeFormatStartDate);
+			
+			Optional<UnitType> unitType = this.unitTypeRepository.findById(unitItem.getUnitTypeId());
+			 if(unitType.isPresent()) {
+				 unitResponseFormat.setUnitTypeCode(unitType.get().getCode());
+			 }
+			 unitResponseFormatList.add(unitResponseFormat);
+		}
+		return unitResponseFormatList;
 	}
 
 }

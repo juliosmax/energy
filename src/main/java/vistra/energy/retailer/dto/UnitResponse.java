@@ -6,7 +6,9 @@ import vistra.energy.retailer.model.Unit;
 
 public class UnitResponse {
 	
-	private List<Unit> records;
+	//private List<Unit> records;
+	
+	private List<UnitResponseFormat> records;
 	
 	private int page;
 	
@@ -18,11 +20,11 @@ public class UnitResponse {
 		
 	}
 
-	public List<Unit> getRecords() {
+	public List<UnitResponseFormat> getRecords() {
 		return records;
 	}
 
-	public void setRecords(List<Unit> records) {
+	public void setRecords(List<UnitResponseFormat> records) {
 		this.records = records;
 	}
 

@@ -4,7 +4,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import vistra.energy.retailer.exception.BadDateTimeException;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+
+//import vistra.energy.retailer.exception.BadDateTimeException;
 
 public class EffectiveDateMarketDesignation {
 
@@ -40,7 +44,11 @@ public class EffectiveDateMarketDesignation {
 			Date effectiveDate=formatter.parse(this.date+" "+this.time);
 			return effectiveDate;
 		} catch (ParseException e) {
-			throw new BadDateTimeException("Bad date or time request");
+			//throw new BadDateTimeException("Bad date or time request");
+			ErrorDetails response = new ErrorDetails("Bad date or time request");
+			throw new WebApplicationException(Response.status(Status.BAD_REQUEST)
+			          .entity(response)
+			          .build());
 		}  
 		 
 	}
