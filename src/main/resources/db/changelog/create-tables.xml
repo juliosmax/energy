@@ -1,0 +1,92 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"  
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+  xmlns:pro="http://www.liquibase.org/xml/ns/pro"  
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd" changeLogId="9d11152c-83bb-4735-b9b8-e940437ec720">
+   
+    <changeSet author="julio.rodriguez (generated)" id="1665004263626-1">
+        <createTable schemaName="master" tableName="unit">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="unit_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="internal_short_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="internal_long_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit_start_date" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit_end_date" type="TIMESTAMP WITH TIME ZONE"/>
+            <column name="unit_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="true" name="draft" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit_identifier" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="julio.rodriguez (generated)" id="1665004263626-2">
+        <createTable schemaName="master" tableName="market">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="market_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="julio.rodriguez (generated)" id="1665004263626-3">
+        <createTable schemaName="master" tableName="unit_market_designation">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="unit_market_designation_pkey"/>
+            </column>
+            <column name="unit_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="market_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="effective_date" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="registration_code" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="market_share_percent" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="julio.rodriguez (generated)" id="1665004263626-4">
+        <createTable schemaName="master" tableName="unit_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="unit_type_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="julio.rodriguez (generated)" id="1665004263626-5">
+        <addForeignKeyConstraint baseColumnNames="market_id" baseTableName="unit_market_designation" baseTableSchemaName="master" constraintName="fk_unit_market_designation_market_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="market" referencedTableSchemaName="master" validate="true"/>
+    </changeSet>
+    <changeSet author="julio.rodriguez (generated)" id="1665004263626-6">
+        <addForeignKeyConstraint baseColumnNames="unit_id" baseTableName="unit_market_designation" baseTableSchemaName="master" constraintName="fk_unit_market_designation_unit_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="unit_type" referencedTableSchemaName="master" validate="true"/>
+    </changeSet>
+    <changeSet author="julio.rodriguez (generated)" id="1665004263626-7">
+        <addForeignKeyConstraint baseColumnNames="unit_type_id" baseTableName="unit" baseTableSchemaName="master" constraintName="fk_unit_unit_type" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="unit_type" referencedTableSchemaName="master" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
