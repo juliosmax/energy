@@ -1,0 +1,807 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"  
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+  xmlns:pro="http://www.liquibase.org/xml/ns/pro"  
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd" changeLogId="9d11152c-83bb-4735-b9b8-e940437ec720">
+   
+    <changeSet author="julio.rodriguez (generated)" id="1665080823472-4">
+        <insert schemaName="master" tableName="market">
+            <column name="id" valueNumeric="1"/>
+            <column name="name" value="California ISO"/>
+            <column name="code" value="CAISO"/>
+        </insert>
+        <insert schemaName="master" tableName="market">
+            <column name="id" valueNumeric="2"/>
+            <column name="name" value="Electric Reliability Council of Texas"/>
+            <column name="code" value="ERCOT"/>
+        </insert>
+        <insert schemaName="master" tableName="market">
+            <column name="id" valueNumeric="3"/>
+            <column name="name" value="Midcontinent ISO"/>
+            <column name="code" value="MISO"/>
+        </insert>
+        <insert schemaName="master" tableName="market">
+            <column name="id" valueNumeric="4"/>
+            <column name="name" value="PJM Interconnection"/>
+            <column name="code" value="PJM"/>
+        </insert>
+        <insert schemaName="master" tableName="market">
+            <column name="id" valueNumeric="5"/>
+            <column name="name" value="New York ISO"/>
+            <column name="code" value="NY-ISO"/>
+        </insert>
+        <insert schemaName="master" tableName="market">
+            <column name="id" valueNumeric="6"/>
+            <column name="name" value="ISO New England"/>
+            <column name="code" value="ISO-NE"/>
+        </insert>
+        <insert schemaName="master" tableName="market">
+            <column name="id" valueNumeric="7"/>
+            <column name="name" value="Electric Energy Inc"/>
+            <column name="code" value="EEI"/>
+        </insert>
+    </changeSet>
+    <changeSet author="julio.rodriguez (generated)" id="1665080823472-6">
+        <insert schemaName="master" tableName="unit_type">
+            <column name="id" valueNumeric="1"/>
+            <column name="name" value="Battery"/>
+            <column name="code" value="BAT"/>
+        </insert>
+        <insert schemaName="master" tableName="unit_type">
+            <column name="id" valueNumeric="2"/>
+            <column name="name" value="Combined Cycle Configuration"/>
+            <column name="code" value="CCC"/>
+        </insert>
+        <insert schemaName="master" tableName="unit_type">
+            <column name="id" valueNumeric="3"/>
+            <column name="name" value="Combustion Turbine"/>
+            <column name="code" value="CTB"/>
+        </insert>
+        <insert schemaName="master" tableName="unit_type">
+            <column name="id" valueNumeric="4"/>
+            <column name="name" value="Gas Turbine"/>
+            <column name="code" value="GTB"/>
+        </insert>
+        <insert schemaName="master" tableName="unit_type">
+            <column name="id" valueNumeric="5"/>
+            <column name="name" value="Coal"/>
+            <column name="code" value="COL"/>
+        </insert>
+        <insert schemaName="master" tableName="unit_type">
+            <column name="id" valueNumeric="6"/>
+            <column name="name" value="Nuclear"/>
+            <column name="code" value="NUC"/>
+        </insert>
+        <insert schemaName="master" tableName="unit_type">
+            <column name="id" valueNumeric="7"/>
+            <column name="name" value="Solar"/>
+            <column name="code" value="SOL"/>
+        </insert>
+        <insert schemaName="master" tableName="unit_type">
+            <column name="id" valueNumeric="8"/>
+            <column name="name" value="Wind Turbine"/>
+            <column name="code" value="WIN"/>
+        </insert>
+        <insert schemaName="master" tableName="unit_type">
+            <column name="id" valueNumeric="9"/>
+            <column name="name" value="Steam Turbine"/>
+            <column name="code" value="STB"/>
+        </insert>
+    </changeSet>
+    <changeSet author="julio.rodriguez (generated)" id="1665080823472-5">
+        <insert schemaName="master" tableName="unit_market_designation">
+            <column name="id" valueNumeric="1"/>
+            <column name="unit_id" valueNumeric="1"/>
+            <column name="market_id" valueNumeric="2"/>
+            <column name="effective_date" valueDate="2000-01-01T05:00:00"/>
+            <column name="registration_code" value="AC-A-3314532774678"/>
+            <column name="market_share_percent" valueNumeric="99"/>
+        </insert>
+        <insert schemaName="master" tableName="unit_market_designation">
+            <column name="id" valueNumeric="2"/>
+            <column name="unit_id" valueNumeric="1"/>
+            <column name="market_id" valueNumeric="1"/>
+            <column name="effective_date" valueDate="2000-01-01T05:00:00"/>
+            <column name="registration_code" value="EC-A-3365432174678"/>
+            <column name="market_share_percent" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+    
+    <changeSet author="julio.rodriguez (generated)" id="1665080823472-1">
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="1"/>
+            <column name="name" value="Unit 1"/>
+            <column name="internal_short_name" value="U1"/>
+            <column name="internal_long_name" value="Unit CAISO 1"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="1"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="CAISO1"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="2"/>
+            <column name="name" value="Unit 2"/>
+            <column name="internal_short_name" value="U2"/>
+            <column name="internal_long_name" value="Unit CAISO 2"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="2"/>
+            <column name="draft" valueBoolean="false"/>
+            <column name="unit_identifier" value="CAISO4"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="3"/>
+            <column name="name" value="Unit 3"/>
+            <column name="internal_short_name" value="U3"/>
+            <column name="internal_long_name" value="Unit CAISO 3"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="3"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="CAISO9"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="4"/>
+            <column name="name" value="Unit 4"/>
+            <column name="internal_short_name" value="U4"/>
+            <column name="internal_long_name" value="Unit CAISO 4"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="4"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="CAISO16"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="5"/>
+            <column name="name" value="Unit 5"/>
+            <column name="internal_short_name" value="U5"/>
+            <column name="internal_long_name" value="Unit CAISO 5"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="5"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="CAISO25"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="6"/>
+            <column name="name" value="Unit 6"/>
+            <column name="internal_short_name" value="U6"/>
+            <column name="internal_long_name" value="Unit CAISO 6"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="6"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="CAISO36"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="7"/>
+            <column name="name" value="Unit 7"/>
+            <column name="internal_short_name" value="U7"/>
+            <column name="internal_long_name" value="Unit CAISO 7"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="7"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="CAISO49"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="8"/>
+            <column name="name" value="Unit 8"/>
+            <column name="internal_short_name" value="U8"/>
+            <column name="internal_long_name" value="Unit CAISO 8"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="8"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="CAISO64"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="9"/>
+            <column name="name" value="Unit 9"/>
+            <column name="internal_short_name" value="U9"/>
+            <column name="internal_long_name" value="Unit CAISO 9"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="9"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="CAISO81"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="10"/>
+            <column name="name" value="Unit 10"/>
+            <column name="internal_short_name" value="U10"/>
+            <column name="internal_long_name" value="Unit ERCOT 10"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="1"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ERCOT20"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="11"/>
+            <column name="name" value="Unit 11"/>
+            <column name="internal_short_name" value="U11"/>
+            <column name="internal_long_name" value="Unit ERCOT 11"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="2"/>
+            <column name="draft" valueBoolean="false"/>
+            <column name="unit_identifier" value="ERCOT44"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="12"/>
+            <column name="name" value="Unit 12"/>
+            <column name="internal_short_name" value="U12"/>
+            <column name="internal_long_name" value="Unit ERCOT 12"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="3"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ERCOT72"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="13"/>
+            <column name="name" value="Unit 13"/>
+            <column name="internal_short_name" value="U13"/>
+            <column name="internal_long_name" value="Unit ERCOT 13"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="4"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ERCOT104"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="14"/>
+            <column name="name" value="Unit 14"/>
+            <column name="internal_short_name" value="U14"/>
+            <column name="internal_long_name" value="Unit ERCOT 14"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="5"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ERCOT140"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="15"/>
+            <column name="name" value="Unit 15"/>
+            <column name="internal_short_name" value="U15"/>
+            <column name="internal_long_name" value="Unit ERCOT 15"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="6"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ERCOT180"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="16"/>
+            <column name="name" value="Unit 16"/>
+            <column name="internal_short_name" value="U16"/>
+            <column name="internal_long_name" value="Unit ERCOT 16"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="7"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ERCOT224"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="17"/>
+            <column name="name" value="Unit 17"/>
+            <column name="internal_short_name" value="U17"/>
+            <column name="internal_long_name" value="Unit ERCOT 17"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="8"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ERCOT272"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="18"/>
+            <column name="name" value="Unit 18"/>
+            <column name="internal_short_name" value="U18"/>
+            <column name="internal_long_name" value="Unit ERCOT 18"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="9"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ERCOT324"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="19"/>
+            <column name="name" value="Unit 19"/>
+            <column name="internal_short_name" value="U19"/>
+            <column name="internal_long_name" value="Unit MISO 19"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="1"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="MISO57"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="20"/>
+            <column name="name" value="Unit 20"/>
+            <column name="internal_short_name" value="U20"/>
+            <column name="internal_long_name" value="Unit MISO 20"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="2"/>
+            <column name="draft" valueBoolean="false"/>
+            <column name="unit_identifier" value="MISO120"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="21"/>
+            <column name="name" value="Unit 21"/>
+            <column name="internal_short_name" value="U21"/>
+            <column name="internal_long_name" value="Unit MISO 21"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="3"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="MISO189"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="22"/>
+            <column name="name" value="Unit 22"/>
+            <column name="internal_short_name" value="U22"/>
+            <column name="internal_long_name" value="Unit MISO 22"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="4"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="MISO264"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="23"/>
+            <column name="name" value="Unit 23"/>
+            <column name="internal_short_name" value="U23"/>
+            <column name="internal_long_name" value="Unit MISO 23"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="5"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="MISO345"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="24"/>
+            <column name="name" value="Unit 24"/>
+            <column name="internal_short_name" value="U24"/>
+            <column name="internal_long_name" value="Unit MISO 24"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="6"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="MISO432"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="25"/>
+            <column name="name" value="Unit 25"/>
+            <column name="internal_short_name" value="U25"/>
+            <column name="internal_long_name" value="Unit MISO 25"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="7"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="MISO525"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="26"/>
+            <column name="name" value="Unit 26"/>
+            <column name="internal_short_name" value="U26"/>
+            <column name="internal_long_name" value="Unit MISO 26"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="8"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="MISO624"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="27"/>
+            <column name="name" value="Unit 27"/>
+            <column name="internal_short_name" value="U27"/>
+            <column name="internal_long_name" value="Unit MISO 27"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="9"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="MISO729"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="28"/>
+            <column name="name" value="Unit 28"/>
+            <column name="internal_short_name" value="U28"/>
+            <column name="internal_long_name" value="Unit PJM 28"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="1"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="PJM112"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="29"/>
+            <column name="name" value="Unit 29"/>
+            <column name="internal_short_name" value="U29"/>
+            <column name="internal_long_name" value="Unit PJM 29"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="2"/>
+            <column name="draft" valueBoolean="false"/>
+            <column name="unit_identifier" value="PJM232"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="30"/>
+            <column name="name" value="Unit 30"/>
+            <column name="internal_short_name" value="U30"/>
+            <column name="internal_long_name" value="Unit PJM 30"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="3"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="PJM360"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="31"/>
+            <column name="name" value="Unit 31"/>
+            <column name="internal_short_name" value="U31"/>
+            <column name="internal_long_name" value="Unit PJM 31"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="4"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="PJM496"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="32"/>
+            <column name="name" value="Unit 32"/>
+            <column name="internal_short_name" value="U32"/>
+            <column name="internal_long_name" value="Unit PJM 32"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="5"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="PJM640"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="33"/>
+            <column name="name" value="Unit 33"/>
+            <column name="internal_short_name" value="U33"/>
+            <column name="internal_long_name" value="Unit PJM 33"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="6"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="PJM792"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="34"/>
+            <column name="name" value="Unit 34"/>
+            <column name="internal_short_name" value="U34"/>
+            <column name="internal_long_name" value="Unit PJM 34"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="7"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="PJM952"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="35"/>
+            <column name="name" value="Unit 35"/>
+            <column name="internal_short_name" value="U35"/>
+            <column name="internal_long_name" value="Unit PJM 35"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="8"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="PJM1120"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="36"/>
+            <column name="name" value="Unit 36"/>
+            <column name="internal_short_name" value="U36"/>
+            <column name="internal_long_name" value="Unit PJM 36"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="9"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="PJM1296"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="37"/>
+            <column name="name" value="Unit 37"/>
+            <column name="internal_short_name" value="U37"/>
+            <column name="internal_long_name" value="Unit NY-ISO 37"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="1"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="NY-ISO185"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="38"/>
+            <column name="name" value="Unit 38"/>
+            <column name="internal_short_name" value="U38"/>
+            <column name="internal_long_name" value="Unit NY-ISO 38"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="2"/>
+            <column name="draft" valueBoolean="false"/>
+            <column name="unit_identifier" value="NY-ISO380"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="39"/>
+            <column name="name" value="Unit 39"/>
+            <column name="internal_short_name" value="U39"/>
+            <column name="internal_long_name" value="Unit NY-ISO 39"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="3"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="NY-ISO585"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="40"/>
+            <column name="name" value="Unit 40"/>
+            <column name="internal_short_name" value="U40"/>
+            <column name="internal_long_name" value="Unit NY-ISO 40"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="4"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="NY-ISO800"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="41"/>
+            <column name="name" value="Unit 41"/>
+            <column name="internal_short_name" value="U41"/>
+            <column name="internal_long_name" value="Unit NY-ISO 41"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="5"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="NY-ISO1025"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="42"/>
+            <column name="name" value="Unit 42"/>
+            <column name="internal_short_name" value="U42"/>
+            <column name="internal_long_name" value="Unit NY-ISO 42"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="6"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="NY-ISO1260"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="43"/>
+            <column name="name" value="Unit 43"/>
+            <column name="internal_short_name" value="U43"/>
+            <column name="internal_long_name" value="Unit NY-ISO 43"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="7"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="NY-ISO1505"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="44"/>
+            <column name="name" value="Unit 44"/>
+            <column name="internal_short_name" value="U44"/>
+            <column name="internal_long_name" value="Unit NY-ISO 44"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="8"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="NY-ISO1760"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="45"/>
+            <column name="name" value="Unit 45"/>
+            <column name="internal_short_name" value="U45"/>
+            <column name="internal_long_name" value="Unit NY-ISO 45"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="9"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="NY-ISO2025"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="46"/>
+            <column name="name" value="Unit 46"/>
+            <column name="internal_short_name" value="U46"/>
+            <column name="internal_long_name" value="Unit ISO-NE 46"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="1"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ISO-NE276"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="47"/>
+            <column name="name" value="Unit 47"/>
+            <column name="internal_short_name" value="U47"/>
+            <column name="internal_long_name" value="Unit ISO-NE 47"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="2"/>
+            <column name="draft" valueBoolean="false"/>
+            <column name="unit_identifier" value="ISO-NE564"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="48"/>
+            <column name="name" value="Unit 48"/>
+            <column name="internal_short_name" value="U48"/>
+            <column name="internal_long_name" value="Unit ISO-NE 48"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="3"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ISO-NE864"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="49"/>
+            <column name="name" value="Unit 49"/>
+            <column name="internal_short_name" value="U49"/>
+            <column name="internal_long_name" value="Unit ISO-NE 49"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="4"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ISO-NE1176"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="50"/>
+            <column name="name" value="Unit 50"/>
+            <column name="internal_short_name" value="U50"/>
+            <column name="internal_long_name" value="Unit ISO-NE 50"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="5"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ISO-NE1500"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="51"/>
+            <column name="name" value="Unit 51"/>
+            <column name="internal_short_name" value="U51"/>
+            <column name="internal_long_name" value="Unit ISO-NE 51"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="6"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ISO-NE1836"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="52"/>
+            <column name="name" value="Unit 52"/>
+            <column name="internal_short_name" value="U52"/>
+            <column name="internal_long_name" value="Unit ISO-NE 52"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="7"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ISO-NE2184"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="53"/>
+            <column name="name" value="Unit 53"/>
+            <column name="internal_short_name" value="U53"/>
+            <column name="internal_long_name" value="Unit ISO-NE 53"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="8"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ISO-NE2544"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="54"/>
+            <column name="name" value="Unit 54"/>
+            <column name="internal_short_name" value="U54"/>
+            <column name="internal_long_name" value="Unit ISO-NE 54"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="9"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="ISO-NE2916"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="55"/>
+            <column name="name" value="Unit 55"/>
+            <column name="internal_short_name" value="U55"/>
+            <column name="internal_long_name" value="Unit EEI 55"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="1"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="EEI385"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="56"/>
+            <column name="name" value="Unit 56"/>
+            <column name="internal_short_name" value="U56"/>
+            <column name="internal_long_name" value="Unit EEI 56"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="2"/>
+            <column name="draft" valueBoolean="false"/>
+            <column name="unit_identifier" value="EEI784"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="57"/>
+            <column name="name" value="Unit 57"/>
+            <column name="internal_short_name" value="U57"/>
+            <column name="internal_long_name" value="Unit EEI 57"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="3"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="EEI1197"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="58"/>
+            <column name="name" value="Unit 58"/>
+            <column name="internal_short_name" value="U58"/>
+            <column name="internal_long_name" value="Unit EEI 58"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="4"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="EEI1624"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="59"/>
+            <column name="name" value="Unit 59"/>
+            <column name="internal_short_name" value="U59"/>
+            <column name="internal_long_name" value="Unit EEI 59"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="5"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="EEI2065"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="60"/>
+            <column name="name" value="Unit 60"/>
+            <column name="internal_short_name" value="U60"/>
+            <column name="internal_long_name" value="Unit EEI 60"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="6"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="EEI2520"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="61"/>
+            <column name="name" value="Unit 61"/>
+            <column name="internal_short_name" value="U61"/>
+            <column name="internal_long_name" value="Unit EEI 61"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="7"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="EEI2989"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="62"/>
+            <column name="name" value="Unit 62"/>
+            <column name="internal_short_name" value="U62"/>
+            <column name="internal_long_name" value="Unit EEI 62"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="8"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="EEI3472"/>
+        </insert>
+        <insert schemaName="master" tableName="unit">
+            <column name="id" valueNumeric="63"/>
+            <column name="name" value="Unit 63"/>
+            <column name="internal_short_name" value="U63"/>
+            <column name="internal_long_name" value="Unit EEI 63"/>
+            <column name="unit_start_date" valueDate="2020-10-06T12:06:02.586142"/>
+            <column name="unit_end_date" valueDate="2047-10-06T12:06:02.586142"/>
+            <column name="unit_type_id" valueNumeric="9"/>
+            <column name="draft" valueBoolean="true"/>
+            <column name="unit_identifier" value="EEI3969"/>
+        </insert>
+    </changeSet>
+    
+</databaseChangeLog>
